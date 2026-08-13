@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/2) · t3b08-yd-kb-link-1</title>
+  <meta name="description" content="t3b08-yd-kb-link-1에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://yeouido-room-song.program-school.online/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ /* ===== RESET & BASE ===== */
+ *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+ html { font-size: 16px; scroll-behavior: smooth; }
+ body {
+ font-family: Impact, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+ background: #000;
+ color: #fff;
+ line-height: 1.2;
+ overflow-x: hidden;
+ }
+ img { display: block; max-width: 100%; }
+ a { color: inherit; text-decoration: none; }
+ ul { list-style: none; }
+ button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+ /* ===== TYPOGRAPHY ===== */
+ h1 { font-size: clamp(3.5rem, 12vw, 6rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.9; }
+ h2 { font-size: clamp(2.5rem, 8vw, 4rem); text-transform: uppercase; letter-spacing: -0.02em; }
+ h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); text-transform: uppercase; }
+ p, li { font-family: system-ui, sans-serif; font-size: 1.1rem; line-height: 1.5; }
+ .impact { font-family: Impact, sans-serif; text-transform: uppercase; }
+
+ /* ===== LAYOUT ===== */
+ .container { padding: 48px 24px; max-width: 1200px; margin: 0 auto; }
+ .full-bleed { width: 100%; max-width: none; }
+
+ /* ===== HEADER & NAV ===== */
+ header {
+ background: #ff3b00;
+ padding: 16px 24px;
+ border-bottom: 4px solid #fff;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: sticky;
+ top: 0;
+ z-index: 100;
+ }
+ .logo {
+ font-size: 2.2rem;
+ font-weight: bold;
+ color: #000;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ transform: rotate(-2deg);
+ display: inline-block;
+ }
+ .logo span { background: #000; color: #ff3b00; padding: 0 8px; }
+ nav ul { display: flex; gap: 32px; }
+ nav a {
+ font-family: Impact, sans-serif;
+ font-size: 1.2rem;
+ text-transform: uppercase;
+ color: #000;
+ border: 3px solid #000;
+ padding: 8px 16px;
+ transition: all 0.1s;
+ }
+ nav a:hover { background: #000; color: #ff3b00; border-color: #fff; }
+ .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 4px; }
+ .hamburger span { display: block; width: 32px; height: 4px; background: #000; }
+
+ @media (max-width: 768px) {
+ nav ul { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #ff3b00; padding: 24px; border-bottom: 4px solid #fff; gap: 16px; }
+ nav ul.active { display: flex; }
+ .hamburger { display: flex; }
+ header { padding: 12px 16px; }
+ .logo { font-size: 1.6rem; }
+ }
+
+ /* ===== HERO ===== */
+ .hero {
+ background: #000;
+ padding: 80px 24px 100px;
+ border: 4px solid #ff3b00;
+ margin: 24px;
+ position: relative;
+ overflow: hidden;
+ }
+ .hero::before {
+ content: "🎤🎤🎤";
+ position: absolute;
+ top: -20px; right: -20px;
+ font-size: 12rem;
+ opacity: 0.1;
+ transform: rotate(15deg);
+ pointer-events: none;
+ }
+ .hero h1 { color: #ff3b00; margin-bottom: 16px; transform: skew(-5deg); }
+ .hero p { font-size: 1.4rem; max-width: 600px; margin-bottom: 32px; color: #ccc; }
+ .hero .cta {
+ display: inline-block;
+ background: #fff;
+ color: #000;
+ font-family: Impact, sans-serif;
+ font-size: 1.8rem;
+ text-transform: uppercase;
+ padding: 16px 40px;
+ border: 4px solid #ff3b00;
+ transform: rotate(2deg);
+ transition: all 0.1s;
+ }
+ .hero .cta:hover { background: #ff3b00; color: #fff; border-color: #fff; transform: rotate(-2deg) scale(1.05); }
+ .hero .info-strip {
+ display: flex; gap: 32px; margin-top: 40px; flex-wrap: wrap;
+ font-family: Impact, sans-serif; font-size: 1.3rem; text-transform: uppercase;
+ }
+ .hero .info-strip span { background: #ff3b00; color: #000; padding: 4px 12px; border: 2px solid #fff; }
+
+ @media (max-width: 768px) {
+ .hero { padding: 48px 16px; margin: 12px; }
+ .hero h1 { font-size: 2.8rem; }
+ .hero .cta { font-size: 1.4rem; padding: 12px 24px; }
+ }
+
+ /* ===== SECTIONS ===== */
+ section { padding: 80px 24px; }
+ .section-title {
+ font-size: 3rem;
+ color: #ff3b00;
+ border-left: 8px solid #fff;
+ padding-left: 24px;
+ margin-bottom: 48px;
+ text-transform: uppercase;
+ transform: skew(-3deg);
+ }
+
+ /* ===== ABOUT ===== */
+ .about-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 32px;
+ align-items: start;
+ }
+ .about-grid .text-block p { margin-bottom: 16px; }
+ .about-grid .stats {
+ background: #ff3b00;
+ padding: 32px;
+ border: 4px solid #fff;
+ transform: rotate(2deg);
+ }
+ .about-grid .stats ul li { font-family: Impact, sans-serif; font-size: 1.5rem; color: #000; margin-bottom: 16px; padding-left: 24px; border-left: 4px solid #000; }
+
+ @media (max-width: 768px) {
+ .about-grid { grid-template-columns: 1fr; }
+ .section-title { font-size: 2rem; }
+ }
+
+ /* ===== REVIEWS ===== */
+ .reviews-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 32px;
+ }
+ .review-card {
+ background: #111;
+ border: 4px solid #fff;
+ padding: 24px;
+ transform: rotate(var(--rot, 0deg));
+ transition: all 0.1s;
+ }
+ .review-card:nth-child(odd) { --rot: -2deg; }
+ .review-card:nth-child(even) { --rot: 2deg; }
+ .review-card:hover { border-color: #ff3b00; transform: rotate(0deg) scale(1.02); }
+ .review-card .meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-family: Impact, sans-serif; font-size: 1.1rem; color: #ff3b00; }
+ .review-card .stars { color: #ff3b00; font-size: 1.3rem; letter-spacing: 2px; }
+ .review-card .date { color: #888; font-size: 0.9rem; font-family: system-ui, sans-serif; }
+ .review-card p { color: #ddd; font-size: 1rem; }
+
+ /* ===== GALLERY (SVG placeholders) ===== */
+ .gallery-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 24px;
+ }
+ .gallery-item {
+ aspect-ratio: 4/3;
+ background: #ff3b00;
+ border: 4px solid #fff;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 4rem;
+ transition: all 0.1s;
+ transform: rotate(var(--g-rot, 0deg));
+ }
+ .gallery-item:nth-child(1) { --g-rot: -3deg; }
+ .gallery-item:nth-child(3) { --g-rot: 2deg; }
+ .gallery-item:nth-child(4) { --g-rot: 1deg; }
+ .gallery-item:nth-child(6) { --g-rot: -2deg; }
+ .gallery-item:hover { border-color: #000; transform: rotate(0deg) scale(1.05); }
+
+ @media (max-width: 768px) {
+ .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+ }
+ @media (max-width: 480px) {
+ .gallery-grid { grid-template-columns: 1fr; }
+ }
+
+ /* ===== MAP / CONTACT ===== */
+ .contact-block {
+ display: flex;
+ flex-direction: column;
+ gap: 24px;
+ background: #111;
+ border: 4px solid #ff3b00;
+ padding: 48px;
+ }
+ .contact-block .phone {
+ font-size: 2.5rem;
+ font-family: Impact, sans-serif;
+ color: #ff3b00;
+ display: inline-block;
+ border: 4px solid #fff;
+ padding: 16px 32px;
+ background: #000;
+ text-align: center;
+ transform: rotate(-1deg);
+ }
+ .contact-block .phone a { color: #ff3b00; }
+ .contact-block .phone a:hover { color: #fff; }
+ .map-svg {
+ width: 100%;
+ height: 300px;
+ background: #222;
+ border: 4px solid #fff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 3rem;
+ color: #ff3b00;
+ }
+
+ /* ===== FOOTER ===== */
+ footer {
+ background: #ff3b00;
+ padding: 48px 24px;
+ border-top: 4px solid #fff;
+ margin-top: 40px;
+ }
+ footer .footer-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 32px;
+ max-width: 1200px;
+ margin: 0 auto;
+ }
+ footer h4 { font-family: Impact, sans-serif; font-size: 1.5rem; color: #000; margin-bottom: 16px; border-bottom: 3px solid #000; padding-bottom: 8px; }
+ footer ul li { margin-bottom: 8px; }
+ footer ul a { color: #000; font-family: system-ui, sans-serif; font-weight: bold; border-bottom: 2px solid transparent; }
+ footer ul a:hover { border-bottom-color: #000; }
+ .copyright {
+ text-align: center;
+ margin-top: 40px;
+ padding-top: 24px;
+ border-top: 3px solid #000;
+ color: #000;
+ font-family: Impact, sans-serif;
+ font-size: 1.2rem;
+ }
+
+ @media (max-width: 768px) {
+ footer .footer-grid { grid-template-columns: 1fr; }
+ }
+
+ /* ===== UTILITIES ===== */
+ .text-accent { color: #ff3b00; }
+ .bg-accent { background: #ff3b00; }
+ .border-thick { border: 4px solid #fff; }
+ .skew { transform: skew(-3deg); }
+ .rotate-neg { transform: rotate(-2deg); }
+ .rotate-pos { transform: rotate(2deg); }
+ .gap-32 { gap: 32px; }
+ .mt-48 { margin-top: 48px; }
+ .mb-32 { margin-bottom: 32px; }
+
+ /* ===== RESPONSIVE GLOBAL ===== */
+ @media (max-width: 768px) {
+ section { padding: 48px 16px; }
+ .container { padding: 24px 12px; }
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/2) · t3b08-yd-kb-link-1">
+  <meta property="og:description" content="t3b08-yd-kb-link-1에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://yeouido-room-song.program-school.online/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <div class="logo">🎤 <span>링크</span></div>
+ <nav>
+ <div class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('active')">
+ 
+ </div>
+ <ul>
+ <li><a href="#about">소개</a></li>
+ <li><a href="#reviews">후기</a></li>
+ <li><a href="#gallery">갤러리</a></li>
+ <li><a href="#contact">연락처</a></li>
+ </ul>
+ </nav>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 40개 · 1/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/checklist-002-op6mon.html">여의도 노래방 링크를 찍기 전에, 신발 박스를 열어야 하는 이유</a>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/compare-001-xh5b8v.html">알리익스프레스 소품과 여의도 노래방 링크처럼, 최종판과 원본의 차이는 여기다</a>
+        <p class="post-item__summary">온라인 쇼핑 플랫폼에서 신기해 보이는 소품을 주문한 뒤 실물을 받아보면 사진과 달라서 당황하는 경우가 많습니다. 사진 속에서는 완벽한 디자인과 뛰어난 마감을 자랑하던 상품이 실제로는 기대에 미치지 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260705-196.html">여의도 노래방 선택을 위한 정보 확인 및 이용 안내</a>
+        <p class="post-item__summary">여의도 지역에서 쾌적하고 즐거운 노래방을 찾기 위해서는 신뢰할 수 있는 정보를 미리 확인하는 과정이 필요합니다. 직장인들의 회식이나 중요한 비즈니스 모임 이후 뒤풀이 장소로 노래방을 찾는 경우가 많</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0103.html">여의도 노래방 링크 활용 시 실패 없는 마포/합정 인디 소셜 라운지 가이드 팁</a>
+        <p class="post-item__summary">여의도 노래방 링크를 통해 예약을 시도하다 보면, 많은 사람이 경험하는 공통적인 실패 지점이 있습니다. 가장 흔한 실수는 예약 확정 메시지를 확인하지 않은 채 방문하거나, 사전에 안내된 시간 엄수 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0104.html">여의도 노래방 링크 방문 전 체크할 을지로 풋쌤 동대문점 위치와 접근성</a>
+        <p class="post-item__summary">바쁜 도심 생활 속에서 여의도 노래방 링크 정보를 찾는 분들이라면 피로를 풀기 위한 휴식처에도 관심이 많으실 것입니다. 특히 이동 동선을 고려할 때 접근성이 뛰어난 장소를 선택하는 것은 시간을 절약</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0105.html">여의도 노래방 링크 활용한 4</a>
+        <p class="post-item__summary">복잡한 업무를 처리하다 보면 때로는 여의도 노래방 링크 정보 하나를 찾는 일조차 번거로운 자동화의 영역으로 다가올 때가 있습니다. 최근 개발 현장에서는 반복적인 태스크를 줄이기 위해 다중 에이전트를</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0106.html">여의도 노래방 링크가 알려주는 지수 성장 클리닉의 효율적인 시간대 전략</a>
+        <p class="post-item__summary">흔히들 전문적인 관리는 아무 때나 방문해도 효과가 같을 것이라고 오해하곤 합니다. 하지만 여의도 노래방 링크 정보를 접하는 분들이 디지털 플랫폼의 성장을 고민하듯, 온라인 영역에서도 적절한 타이밍을</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0107.html">여의도 노래방 링크로 확인하는 마포 럭셔리 단체 가라오케 예약 기준</a>
+        <p class="post-item__summary">성공적인 단체 모임을 기획할 때는 공간의 넓이와 시설의 쾌적함을 최우선으로 고려해야 합니다. 여의도 노래방 링크 등을 검색하며 정보를 수집하는 분들이라면, 인원수에 딱 맞는 공간이 얼마나 귀한지 잘</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0108.html">여의도 노래방 링크 체크하는 ishikyujin</a>
+        <p class="post-item__summary">혹시 운영하시는 웹사이트가 예전만큼의 검색 노출 순위를 보이지 않아 답답함을 느끼고 계시지는 않습니까? 단순히 여의도 노래방 링크 같은 외부 요인만 탓할 것이 아니라 알고리즘 감점 요인이 내부에 숨</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0109.html">여의도 노래방 링크 활용한 마포 코인노래방 방음 시설 비교 가이드</a>
+        <p class="post-item__summary">여의도 노래방 링크 검색을 통해 지역 내 엔터테인먼트 시설 정보를 확인하는 이들이 늘고 있습니다. 다만, 개인 연습 공간을 찾는 사용자라면 소음과 진동 차단 능력이 뛰어난 곳을 우선적으로 선별해야 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0110.html">여의도 노래방 링크를 참고한 구글 봇 정밀 검진 및 크롤 버짓 밀착 간호</a>
+        <p class="post-item__summary">여의도 노래방 링크 정보를 최적화하는 과정에서 기술적 데이터의 흐름을 관리하는 것은 필수적인 과업입니다. 크롤러가 웹사이트의 효율성을 어떻게 판단하는지에 따라 검색 결과의 순위가 극명하게 갈리기 때</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0111.html">여의도 노래방 링크 확인 후 안전하게 진행하는 셔츠룸 예약 방법</a>
+        <p class="post-item__summary">여의도 노래방 링크를 통해 정보를 찾는 많은 분이 셔츠룸 예약 단계에서 어려움을 겪곤 합니다. 대부분의 실수는 사전 확인 없이 분위기에 휩쓸려 무작정 방문하는 것에서 시작됩니다. 예약 실패의 80%</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0112.html">여의도 노래방 링크와 함께 확인하는 마포 셔츠룸 예약 시 눈탱이 피하는 법</a>
+        <p class="post-item__summary">여의도 노래방 링크 정보를 조사하는 도중 셔츠룸 관련 업계의 불투명한 요금 체계로 인한 피해 사례를 자주 접하게 됩니다. 소비자가 자신의 권리를 보호하기 위해서는 현명한 판단 기준이 필요합니다. 오</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0113.html">여의도 노래방 링크 활용한 마포 단체 회식용 대형 룸 노래방 가격 정보 비교</a>
+        <p class="post-item__summary">직장 동료들과 저녁 식사를 마친 뒤 장소를 옮기려 할 때 인원이 많으면 적절한 대형 공간을 찾기가 매우 어렵습니다. 여의도 노래방 링크를 통해 주변 시설을 미리 파악해두면 이동 동선을 효율적으로 계</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0114.html">여의도 노래방 링크 기반 마포 유흥 투명 정찰제 가격 정보 디렉토리의 이해</a>
+        <p class="post-item__summary">흔히 유흥 업소를 방문하면 가격이 불투명하게 운영될 것이라는 오해가 많습니다. 하지만 여의도 노래방 링크 정보를 잘 활용하면 체계적으로 관리되는 업장을 찾을 수 있습니다. 투명한 가격 정책은 소비자</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0115.html">여의도 노래방 링크와 구글 틈새 키워드 트래픽 외환 거래 전략의 접점</a>
+        <p class="post-item__summary">온라인에서 트래픽을 확보하기 위해서는 특정 조건을 충족하는 세밀한 키워드 전략이 필수적입니다. 여의도 노래방 링크 데이터를 분석하는 것과 같이 틈새 시장을 공략하는 일은 투자와 닮아 있습니다. 데이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0116.html">여의도 노래방 링크 활용한 마포 셔츠룸 리얼 후기 소셜 마케팅 가이드 분석</a>
+        <p class="post-item__summary">여러분은 유흥 업소를 선택할 때 과연 어떤 정보를 가장 신뢰하시나요? 여의도 노래방 링크를 찾는 사람들처럼 대다수는 검증된 후기를 찾기 위해 시간을 할애합니다. 리뷰의 홍수 속에서 진짜 정보를 골라</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0117.html">여의도 노래방 링크 활용한 마포 홍대 로컬 럭셔리 밤문화 가이드 분석</a>
+        <p class="post-item__summary">서울의 서부권을 대표하는 여의도 노래방 링크 정보를 찾는 이들이라면 자연스럽게 마포와 홍대 지역으로 그 관심을 확장하게 됩니다. 단순히 유흥을 즐기는 단계를 넘어, 해당 지역의 내밀한 문화를 경험하</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0118.html">여의도 노래방 링크 대조를 통한 합리적인 셔츠룸 사이트 선택 방법</a>
+        <p class="post-item__summary">많은 이들이 여의도 노래방 링크 정보를 찾으며 비교군으로 삼는 것이 바로 셔츠룸 시스템입니다. 이 두 가지 선택지는 서비스의 운영 방식과 고객이 기대하는 지향점에서 뚜렷한 차이를 보이기 때문에 사전</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0119.html">여의도 노래방 링크 이용 시 주의할 합정 셔츠룸 단골들이 뽑은 핫플 매거진</a>
+        <p class="post-item__summary">흔히 여의도 노래방 링크를 검색하는 분들이 범하기 쉬운 오류 중 하나는 너무 많은 정보를 한꺼번에 받아들이려 한다는 점입니다. 정보의 홍수 속에서 정작 중요한 예약의 본질을 놓치는 경우가 빈번하며,</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
